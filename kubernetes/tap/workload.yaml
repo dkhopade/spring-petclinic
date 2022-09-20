@@ -8,6 +8,10 @@ metadata:
     app.kubernetes.io/part-of: "spring-petclinic"
     apps.tanzu.vmware.com/has-tests: "true"
 spec:
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
   source:
     git:
       url: https://github.com/dkhopade/spring-petclinic.git
