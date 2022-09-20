@@ -12,5 +12,5 @@ spec:
     git:
       url: https://github.com/dkhopade/spring-petclinic.git
       ref:
-        branch: main
+        branch: accelerator
         tag: tap-1.2
