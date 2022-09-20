@@ -10,7 +10,7 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/sample-accelerators/spring-petclinic.git
+      url: https://github.com/dkhopade/spring-petclinic.git
       ref:
         branch: main
         tag: tap-1.2
