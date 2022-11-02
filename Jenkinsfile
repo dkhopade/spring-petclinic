@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Upload to Artifactory') {
       steps {
-        sh 'jf rt upload --url https://dkhopade.jfrog.io/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/spring-petclinic-2.6.0-SNAPSHOT.jar spring-petclinic/'
+        sh 'jf rt upload --url https://dkhopade.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/spring-petclinic-2.6.0-SNAPSHOT.jar spring-petclinic/'
       }
     }
   }
