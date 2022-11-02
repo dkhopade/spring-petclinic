@@ -28,6 +28,8 @@ pipeline {
         sh 'jf rt upload --url https://dkhopade.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/spring-petclinic-2.6.0-SNAPSHOT.jar spring-petclinic/'
       }
     }
+    /*building a docker image here is failing*/
+    /*
     stage('Upload Docker Container Image to Artifactory') {
       steps {
         sh 'docker login -udeepak.khopade@gmail.com dkhopade.jfrog.io -p${ARTIFACTORY_ACCESS_TOKEN}'
@@ -36,5 +38,6 @@ pipeline {
         sh 'docker push dkhopade.jfrog.io/docker-images/test-jfrog:latest'
       }
     }
+    */
   }
 }
