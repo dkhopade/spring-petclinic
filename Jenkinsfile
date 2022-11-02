@@ -8,9 +8,14 @@ pipeline {
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
   stages {
+    stage('Compile') {
+      steps {
+        sh 'mvn compile'
+      }
+    }
     stage('Test') {
       steps {
-        sh './mvnw clean install'
+        sh 'mvn test'
       }
     }
     stage('Build') {
