@@ -23,9 +23,17 @@ pipeline {
         sh './mvnw clean install'
       }
     }
-    stage('Upload to Artifactory') {
+    stage('Upload JAR to Artifactory') {
       steps {
         sh 'jf rt upload --url https://dkhopade.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/spring-petclinic-2.6.0-SNAPSHOT.jar spring-petclinic/'
+      }
+    }
+    stage('Upload Docker Container Image to Artifactory') {
+      steps {
+        sh 'docker login -udeepak.khopade@gmail.com dkhopade.jfrog.io -p${ARTIFACTORY_ACCESS_TOKEN}'
+        sh 'docker build . -t test-jfrog:latest'
+        sh 'docker tag test-jfrog:latest dkhopade.jfrog.io/docker-images/test-jfrog:latest'
+        sh 'docker push dkhopade.jfrog.io/docker-images/test-jfrog:latest'
       }
     }
   }
