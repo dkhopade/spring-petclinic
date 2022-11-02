@@ -31,6 +31,7 @@ pipeline {
     stage('Upload Docker Container Image to Artifactory') {
       steps {
         sh 'docker login -udeepak.khopade@gmail.com dkhopade.jfrog.io -p${ARTIFACTORY_ACCESS_TOKEN}'
+        sh 'sudo usermod --add-subuids 200000-265535 --add-subgids 200000-265535 $USER && podman system migrate'
         sh 'docker build . -t test-jfrog:latest'
         sh 'docker tag test-jfrog:latest dkhopade.jfrog.io/docker-images/test-jfrog:latest'
         sh 'docker push dkhopade.jfrog.io/docker-images/test-jfrog:latest'
